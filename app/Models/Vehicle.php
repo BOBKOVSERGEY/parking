@@ -17,7 +17,7 @@ class Vehicle extends Model
         'plate_number'
     ];
 
-    protected static function booted()
+    protected static function booted(): void
     {
         static::addGlobalScope('user', function (Builder $builder) {
            $builder->where('user_id', auth()->id()) ;

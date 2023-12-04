@@ -1,6 +1,6 @@
 # alias
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
-https://laraveldaily.com/lesson/build-laravel-api-step-by-step/price-calculation
+https://laraveldaily.com/lesson/build-laravel-api-step-by-step/tests-phpunit
 #date format
 https://laraveldaily.com/post/laravel-datetime-to-carbon-dates-casts
 

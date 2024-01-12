@@ -18,4 +18,5 @@ sail artisan make:test AuthenticationTest
 # api documentation
 sail composer require --dev knuckleswtf/scribe
 sail artisan vendor:publish --tag=scribe-config
+sail artisan scribe:generate
 

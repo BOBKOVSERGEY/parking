@@ -10,7 +10,9 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
-
+/**
+ * @group Auth
+ */
 class LoginController extends Controller
 {
     /**

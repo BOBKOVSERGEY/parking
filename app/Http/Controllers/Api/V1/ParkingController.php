@@ -10,7 +10,9 @@ use App\Services\ParkingPriceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+/**
+ * @group Parking
+ */
 class ParkingController extends Controller
 {
     public function start(ParkingStartRequest $request): ParkingResource|JsonResponse

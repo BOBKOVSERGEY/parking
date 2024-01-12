@@ -7,7 +7,9 @@ use App\Http\Requests\Auth\UserUpdateRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+/**
+ * @group Auth
+ */
 class ProfileController extends Controller
 {
     public function show(Request $request): JsonResponse

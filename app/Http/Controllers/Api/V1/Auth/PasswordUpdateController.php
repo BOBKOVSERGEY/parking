@@ -8,7 +8,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
-
+/**
+ * @group Auth
+ */
 class PasswordUpdateController extends Controller
 {
     public function __invoke(PasswordUpdateRequest $request): JsonResponse

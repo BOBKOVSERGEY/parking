@@ -14,7 +14,8 @@ class Vehicle extends Model
 
     protected $fillable = [
         'user_id',
-        'plate_number'
+        'plate_number',
+        'description',
     ];
 
     protected static function booted(): void

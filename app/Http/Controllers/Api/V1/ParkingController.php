@@ -9,12 +9,32 @@ use App\Models\Parking;
 use App\Services\ParkingPriceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 /**
  * @group Parking
  */
 class ParkingController extends Controller
 {
+    public function index(): AnonymousResourceCollection
+    {
+        $activeParkings = Parking::active()
+            ->latest('start_time')
+            ->get();
+
+        return ParkingResource::collection($activeParkings);
+    }
+
+    public function history(): AnonymousResourceCollection
+    {
+        $stoppedParkings = Parking::stopped()
+            ->with(['vehicle' => fn ($q) => $q->withTrashed()])
+            ->latest('stop_time')
+            ->get();
+
+        return ParkingResource::collection($stoppedParkings);
+    }
+
     public function start(ParkingStartRequest $request): ParkingResource|JsonResponse
     {
         $data = $request->validated();

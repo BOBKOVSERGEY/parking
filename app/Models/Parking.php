@@ -32,6 +32,16 @@ class Parking extends Model
         'stop_time' => 'datetime',
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->whereNull('stop_time');
+    }
+
+    public function scopeStopped($query)
+    {
+        return $query->whereNotNull('stop_time');
+    }
+
     public function zone(): BelongsTo
     {
         return $this->belongsTo(Zone::class);
@@ -42,13 +52,4 @@ class Parking extends Model
         return $this->belongsTo(Vehicle::class);
     }
 
-    public function scopeActive($query)
-    {
-        return $query->whereNull('stop_time');
-    }
-
-    public function scopeStopped($query)
-    {
-        return $query->whereNotNull('stop_time');
-    }
 }

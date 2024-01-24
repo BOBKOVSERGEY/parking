@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\V1\Auth\RegisterController;
 use App\Http\Controllers\Api\V1\ParkingController;
 use App\Http\Controllers\Api\V1\VehicleController;
 use App\Http\Controllers\Api\V1\ZoneController;
+use App\Models\Parking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,8 +43,15 @@ Route::prefix('v1')
     Route::post('auth/logout', LogoutController::class);
 
     Route::apiResource('vehicles', VehicleController::class);
+        Route::get('parkings', [ParkingController::class, 'index']);
+        Route::get('parkings/history', [ParkingController::class, 'history']);
 
     Route::post('parking/start', [ParkingController::class, 'start']);
+
+        Route::bind('activeParking', function ($id) {
+            return Parking::where('id', $id)->active()->firstOrFail();
+        });
+
     Route::get('parking/{parking}', [ParkingController::class, 'show']);
     Route::put('parking/{parking}', [ParkingController::class, 'stop']);
 });
